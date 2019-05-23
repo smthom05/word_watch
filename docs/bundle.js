@@ -83,15 +83,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(() => {
 
-  function getTopWord(){
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.get('https://wordwatch-api.herokuapp.com/api/v1/top_word', function( data ){
-      console.log(data)
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#top_word")
-        .innerHTML = ("Top Word: " + data.word.key)
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#top_word_freq")
-        .innerHTML = (":" + data.word.value)
+  var getTopWord = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.get('https://wordwatch-api.herokuapp.com/api/v1/top_word', function( data ){
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#top_word").text("Top Word: " + Object.keys(data.word)[0])
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#top_word_freq").text("Frequency: " + Object.values(data.word)[0])
+  })
+
+  __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#button").click(function(){
+    var words = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#text_area').text;
+
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.post('https://wordwatch-api.herokuapp.com/api/v1/words', { word: {value: words }}, function(data) {
+      alert(`${word} has been added to master list`)
     })
-  }
+  })
+
 })
 
 

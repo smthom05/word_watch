@@ -13,5 +13,11 @@ describe("Word watch functions", () => {
         })
       })
     })
+
+    describe('when I type in any amount of words and hit Break Down button', () => {
+      it('should post all the words to the master list', () => {
+        
+      })
+    })
   })
 })
