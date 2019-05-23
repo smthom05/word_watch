@@ -1,6 +1,7 @@
 import $ from 'jquery'
 
 $(document).ready(() => {
+  getTopWord()
 
   var getTopWord = function() {
     $.get('https://wordwatch-api.herokuapp.com/api/v1/top_word', function( data ){

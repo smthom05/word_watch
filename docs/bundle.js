@@ -82,6 +82,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(() => {
+  getTopWord()
 
   var getTopWord = function() {
     __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.get('https://wordwatch-api.herokuapp.com/api/v1/top_word', function( data ){
