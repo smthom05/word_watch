@@ -83,13 +83,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(() => {
 
-  var getTopWord = __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.get('https://wordwatch-api.herokuapp.com/api/v1/top_word', function( data ){
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#top_word").text("Top Word: " + Object.keys(data.word)[0])
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#top_word_freq").text("Frequency: " + Object.values(data.word)[0])
-  })
+  var getTopWord = function() {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.get('https://wordwatch-api.herokuapp.com/api/v1/top_word', function( data ){
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#top_word").text("Top Word: " + Object.keys(data.word)[0])
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#top_word_freq").text("Frequency: " + Object.values(data.word)[0])
+    })
+  }
 
   __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#button").click(function(){
-    var words = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#text_area').val().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+    var words = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#text_area').val().replace(/[.,\/#!?$%\^&\*;:{}=\-_`~()]/g,"");
     if (words.includes(' ')) {
       var words_arr = words.split(' ')
       console.log(words_arr);
@@ -103,6 +105,7 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(() => {
         console.log(data.message);
       })
     }
+    getTopWord()
   })
 })
 
