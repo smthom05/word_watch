@@ -89,13 +89,21 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(document).ready(() => {
   })
 
   __WEBPACK_IMPORTED_MODULE_0_jquery___default()("#button").click(function(){
-    var words = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#text_area').text;
-
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.post('https://wordwatch-api.herokuapp.com/api/v1/words', { word: {value: words }}, function(data) {
-      alert(`${word} has been added to master list`)
-    })
+    var words = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#text_area').val().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+    if (words.includes(' ')) {
+      var words_arr = words.split(' ')
+      console.log(words_arr);
+        for (var i = 0; i < words_arr.length; i++){
+          __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.post('https://wordwatch-api.herokuapp.com/api/v1/words', { "word": {"value": words_arr[i] }}, function(data) {
+            console.log(data.message);
+          })
+        };
+    } else {
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default.a.post('https://wordwatch-api.herokuapp.com/api/v1/words', { "word": {"value": words }}, function(data) {
+        console.log(data.message);
+      })
+    }
   })
-
 })
 
 
